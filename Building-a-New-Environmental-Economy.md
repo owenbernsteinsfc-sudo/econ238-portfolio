@@ -5,7 +5,7 @@ Introduction: There is an effort by America to establish a new environmental eco
 Audio: [Discussion](Econ-Discussion.m4a)
 
 <audio controls>
-  <source src="Econ-Discussion.m4a" type="audio/mp4">
+  <source src="../Econ-Discussion.m4a" type="audio/mp4">
   Your browser does not support the audio element.
 </audio>
 
