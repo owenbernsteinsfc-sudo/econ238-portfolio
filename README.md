@@ -6,4 +6,4 @@ Assignments
 
 Assignment 1: [800,000 Gallons. So What?](800000-gallons.md)
 
-Assignment 2: [Building a New Environmental Economy](Building-a-New-Environmental-Economy)
+Assignment 2: [Building a New Environmental Economy](Building-a-New-Environmental-Economy.md)
