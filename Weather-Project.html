@@ -36,7 +36,7 @@
       padding-bottom: 4rem;
     }
 
-    /* Control Header & Mode Switcher */
+    /* Minimal Top Navigation Header */
     .top-bar {
       position: sticky;
       top: 0;
@@ -45,28 +45,12 @@
       backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border-color);
       padding: 0.75rem 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       font-family: var(--font-sans);
     }
 
     .brand { font-weight: 700; font-size: 0.9rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-muted); }
 
-    .toggle-btn {
-      background: var(--text-main);
-      color: #fff;
-      border: none;
-      padding: 0.5rem 1.25rem;
-      border-radius: 4px;
-      font-weight: 600;
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: background 0.2s ease;
-    }
-    .toggle-btn:hover { background: var(--accent-blue); }
-
-    /* Layout Containers */
+    /* Layout Container */
     .container {
       max-width: 720px;
       margin: 0 auto;
@@ -110,7 +94,7 @@
 
     p { margin-bottom: 1.5rem; }
 
-    /* Visual Breakout Components */
+    /* Visual Components & Breakouts */
     .chart-breakout {
       width: 100%;
       max-width: 960px;
@@ -159,35 +143,6 @@
     .math-card ul { list-style: none; }
     .math-card li { margin-bottom: 0.5rem; font-size: 0.95rem; }
 
-    /* Poster Specific Styles (Hidden in Web Mode) */
-    #poster-layout {
-      display: none;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem;
-      background: #fff;
-    }
-
-    .poster-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-top: 1.5rem;
-    }
-
-    .poster-card {
-      border: 1px solid var(--border-color);
-      padding: 1.25rem;
-      border-radius: 6px;
-      background: #FAF7F0;
-      font-size: 0.9rem;
-    }
-
-    /* Mode Switching Logic */
-    body.poster-mode { background: #E5E5E5; }
-    body.poster-mode #web-layout { display: none; }
-    body.poster-mode #poster-layout { display: block; }
-
     footer {
       border-top: 1px solid var(--border-color);
       padding-top: 2rem;
@@ -196,49 +151,54 @@
       font-size: 0.85rem;
       color: var(--text-muted);
     }
+
+    footer a {
+      color: var(--accent-blue);
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Top Sticky Navigation Bar -->
+  <!-- Navigation Header -->
   <div class="top-bar">
-    <div class="brand">Econ 238 • Extreme Weather Mortality Trends</div>
-    <button class="toggle-btn" id="mode-toggle" onclick="toggleLayout()">Switch to 18x24 Poster View</button>
+    <div class="brand">Econ 238 • Climate Adaptation & Mortality</div>
   </div>
 
-  <!-- MAIN WEBPAGE LAYOUT -->
-  <main idweb-layout" class="container">
+  <!-- MAIN WEBPAGE CONTENT -->
+  <main class="container">
     
     <header>
       <h1>We Didn't Get Safer From Storms by Accident — We Got Safer by Moving</h1>
       <p class="subtitle">Why raw weather fatality counts hide an 80-year collapse in per-capita storm risk, and why exposure management matters more than hazard elimination.</p>
       <div class="meta-byline">
-        <strong>Econ 238 Final Submission</strong> • Published September 2026 • Data: NOAA NWS (1940–2024), US Census Bureau, NBER WP #34313
+        <strong>By Owen Bernstein</strong> • Econ 238 Final Portfolio • Published September 2026 • Data: NOAA NWS (1940–2024), US Census Bureau, NBER WP #34313
       </div>
     </header>
 
-    <!-- Section 1: Opening Hook -->
+    <!-- Intro -->
     <section>
       <p>Storms haven't gotten less dangerous[cite: 1]. We've gotten better at not being where they hit — mostly[cite: 1]. Annual U.S. deaths from tornadoes, floods, and hurricanes have fallen for decades even as population and coastal development have expanded rapidly[cite: 1, 2]. But raw death counts hide the real story: population-adjusted rates fell even faster, which means the average American today faces a small fraction of the storm-death risk their grandparents did[cite: 1, 2].</p>
-      <p>This isn't because storms weakened; it's because of building codes, early warning systems, insurance markets, and — more subtly — where and how we choose to live relative to where the danger is[cite: 1]. That last part, however, is getting complicated by internal migration into hazard-prone Sun Belt regions[cite: 1].</p>
+      <p>This isn't because storms weakened; it's because of building codes, early warning systems, insurance markets, and — more subtly — where and how we choose to live relative to where the danger is[cite: 1].</p>
     </section>
 
-    <!-- Section 2: Storm Fatalities & The Denominator Effect -->
+    <!-- Section 1: Denominator & NOAA Data -->
     <section>
       <h2>1. The Denominator Effect: Raw Counts vs. Mortality Rates</h2>
       <p>Between 1940 and 1979, the United States averaged 260 to 308 deaths per year from tornadoes, floods, and hurricanes combined[cite: 2]. By the 2010s and 2020s, that figure had dropped to 170–218 deaths annually[cite: 2]. While a ~30% drop in raw fatalities is impressive[cite: 2], it severely understates human adaptation[cite: 1, 2].</p>
       
-      <!-- Chart 1: Raw vs Rate -->
+      <!-- Chart 1: Raw Decadal Fatalities -->
       <div class="chart-breakout">
         <div class="chart-header">
           <div class="chart-title">U.S. Extreme Weather Fatalities (1940s–2020s)</div>
-          <div class="chart-desc">Decade annual averages for Tornado, Flood, and Hurricane combined. Note the 2000s Katrina outlier spike (1,016 deaths in 2005)[cite: 2].</div>
+          <div class="chart-desc">Decade annual averages for Tornado, Flood, and Hurricane combined[cite: 2]. Note the 2000s Katrina outlier spike (1,016 deaths in 2005)[cite: 2].</div>
         </div>
         <canvas id="stormChart" height="120"></canvas>
       </div>
 
       <p>During this same 85-year period, the U.S. population nearly tripled—growing from ~132 million in 1940 to over 333 million today[cite: 2]. When we divide fatalities by population to establish a true "death intensity" rate, per-capita mortality risk collapsed by approximately <strong>65%</strong> (falling from 1.85 deaths per million to ~0.65 per million)[cite: 2].</p>
 
+      <!-- Chart 2: Per-Capita Rate -->
       <div class="chart-breakout">
         <div class="chart-header">
           <div class="chart-title">Population-Adjusted Fatality Rate (Per Million Americans)</div>
@@ -248,18 +208,12 @@
       </div>
     </section>
 
-    <!-- Section 3: Internal Migration -->
+    <!-- Section 2: Heat & Burke Analysis -->
     <section>
-      <h2>2. Exposure and Migration: Moving Into the Path of Hazard</h2>
-      <p>U.S. Census data confirms a continuous southward and westward shift in the mean center of population[cite: 1]. Millions of Americans have relocated to Florida, Texas, Arizona, and the Carolinas[cite: 1]. However, a move to the Sun Belt is not automatically a move into a hurricane zone or floodplain[cite: 1]. Risk exposure depends entirely on micro-geography—whether development occurs on elevated inland ridges or immediate coastal wetlands[cite: 1].</p>
-      <p>As the IPCC SREX report emphasizes, long-term growth in disaster losses is driven primarily by increased capital and asset exposure in hazard-prone areas rather than changes in storm frequency[cite: 1]. We are putting significantly more wealth and infrastructure directly in harm's way[cite: 1].</p>
-    </section>
-
-    <!-- Section 4: Heat vs Cold & Burke Paper -->
-    <section>
-      <h2>3. The Silent Killer: Extreme Heat vs. Epidemiological Cold</h2>
+      <h2>2. The Silent Killer: Extreme Heat vs. Epidemiological Cold</h2>
       <p>Unlike storms, NWS tracked heat fatalities show an alarming upward trend in recent years[cite: 2]. The catastrophic 1995 Chicago heat wave (1,021 deaths in a single year) highlighted that heat mortality is an exposure and access crisis—impacting elderly and low-income residents lacking reliable air conditioning or power grid access[cite: 1, 2].</p>
 
+      <!-- Chart 3: Heat Fatalities -->
       <div class="chart-breakout">
         <div class="chart-header">
           <div class="chart-title">NWS Heat Fatalities & Chicago 1995 Spike</div>
@@ -269,22 +223,22 @@
       </div>
 
       <div class="callout-box">
-        <div class="callout-title">Critical Clarity: NWS Counts vs. Burke et al. (NBER WP #34313)</div>
-        <p>It is essential not to confuse two distinct numbers[cite: 1]. <strong>NWS fatality counts</strong> measure direct, immediate-cause deaths (e.g., direct heat stroke)[cite: 1]. Conversely, <strong>Burke et al.</strong> find that temperature accounts for <strong>5–12% of total global mortality</strong>[cite: 1]. This higher figure is an epidemiological attributable estimate—capturing broad health nudges where extreme temperatures exacerbate underlying cardiovascular or respiratory illness[cite: 1]. Crucially, Burke et al. prove that globally and across most regions, <strong>cold kills significantly more people than heat</strong>[cite: 1].</p>
+        <div class="callout-title">Critical Distinction: NWS Counts vs. Burke et al. (NBER WP #34313)</div>
+        <p>It is essential not to confuse two distinct metrics[cite: 1]. <strong>NWS fatality counts</strong> measure direct, immediate-cause deaths (e.g., direct heat stroke)[cite: 1]. Conversely, <strong>Burke et al.</strong> find that temperature accounts for <strong>5–12% of total global mortality</strong>[cite: 1]. This higher figure is an epidemiological attributable estimate—capturing broad health nudges where extreme temperatures exacerbate underlying cardiovascular or respiratory illness[cite: 1]. Crucially, Burke et al. prove that globally and across most regions, <strong>cold kills significantly more people than heat</strong>[cite: 1].</p>
       </div>
     </section>
 
-    <!-- Section 5: Economic Analysis & Calculations -->
+    <!-- Section 3: Economic Math -->
     <section>
-      <h2>4. Economic Logic: Capital Relocation & Carbon Math</h2>
-      <p>Economists evaluate risk as the product of Hazard and Exposure ($\text{Risk} = \text{Hazard} \times \text{Exposure}$)[cite: 1]. Managing exposure is frequently far more cost-effective than attempting to alter climate hazards directly[cite: 1].</p>
+      <h2>3. Economic Logic: Capital Relocation & Carbon Math</h2>
+      <p>Economists evaluate risk as the product of Hazard and Exposure (<strong>Risk = Hazard × Exposure</strong>)[cite: 1]. Managing exposure is frequently far more cost-effective than attempting to alter climate hazards directly[cite: 1].</p>
 
       <div class="math-card">
         <h4>William Nordhaus Coastal Capital Relocation Calculation</h4>
         <ul>
           <li>• <strong>Vulnerable Coastal Capital:</strong> ~$600 Billion in structures below 10 meters elevation in hurricane zones[cite: 1].</li>
-          <li>• <strong>Lifespan / Depreciation:</strong> Assuming a 50-year structural lifespan ($\frac{1}{50}$ or 2% depreciating annually)[cite: 1].</li>
-          <li>• <strong>Annual Relocation Cost:</strong> $\$600\text{B} \times 0.02 = \mathbf{\$12\text{ Billion / year}}$[cite: 1].</li>
+          <li>• <strong>Lifespan / Depreciation:</strong> Assuming a 50-year structural lifespan (1/50 or 2% depreciating annually)[cite: 1].</li>
+          <li>• <strong>Annual Relocation Cost:</strong> $600B × 0.02 = <strong>$12 Billion / year</strong>[cite: 1].</li>
           <li>• <strong>Economic Impact:</strong> At ~$28.5 Trillion US GDP, managed capital retreat costs just <strong>0.04% of annual GDP</strong>[cite: 1].</li>
         </ul>
       </div>
@@ -299,7 +253,7 @@
       </div>
     </section>
 
-    <!-- Section 6: Hold On / Skepticism -->
+    <!-- Section 4: Self-Skepticism / Hold On -->
     <section>
       <div class="callout-box" style="border-color: var(--accent-amber); background: rgba(196, 132, 29, 0.06);">
         <div class="callout-title" style="color: var(--accent-amber);">Hold On! Required Self-Skepticism</div>
@@ -307,74 +261,33 @@
       </div>
     </section>
 
-    <!-- Section 7: Conclusion & Pollock Metaphor -->
+    <!-- Conclusion -->
     <section>
       <h2>Conclusion & Ending Flourish</h2>
       <p>Jackson Pollock’s 1933 painting, <em>Man With Hand Plow</em>, offers an enduring visual metaphor: human adaptation to environmental hazards is an active, incremental, and behavioral process[cite: 1]. We do not prevent storms from forming; we build stronger roofs, establish early warnings, manage coastal zones, and adapt through economic choices[cite: 1].</p>
     </section>
 
     <footer>
-      <p><strong>Sources:</strong> NOAA NWS Natural Hazard Statistics (1940–2024)[cite: 2]; US Census Bureau Mean Center of Population[cite: 1]; IPCC SREX Report[cite: 1]; Burke et al. (2025) NBER WP #34313[cite: 1]; Nordhaus (2010) Hurricane Adaptation Economics[cite: 1].</p>
+      <p><strong>Bibliography & Sources:</strong></p>
+      <ul style="list-style: none; padding-left: 0; margin-top: 0.5rem; line-height: 2;">
+        <li>• <a href="https://www.weather.gov/hazstat/" target="_blank">NOAA NWS Natural Hazard Statistics (1940–2024)</a>[cite: 2]</li>
+        <li>• <a href="https://www.census.gov/topics/population/center-of-population.html" target="_blank">US Census Bureau Mean Center of Population Data</a>[cite: 1]</li>
+        <li>• <a href="https://www.ipcc.ch/report/srex/" target="_blank">IPCC Special Report on Managing the Risks of Extreme Events (SREX)</a>[cite: 1]</li>
+        <li>• <a href="https://www.nber.org/papers/w34313" target="_blank">Burke et al. (2025) NBER Working Paper #34313</a>[cite: 1]</li>
+        <li>• <a href="https://www.aeaweb.org/articles?id=10.1257/aer.100.2.142" target="_blank">Nordhaus, W. (2010) Economics of Hurricane Adaptation</a>[cite: 1]</li>
+      </ul>
     </footer>
 
   </main>
 
-  <!-- STANDALONE 18x24 POSTER PRINT LAYOUT -->
-  <div id="poster-layout">
-    <div style="border-bottom: 3px solid var(--text-main); padding-bottom: 1rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-end;">
-      <div>
-        <h1 style="font-size: 2.2rem; margin-bottom: 0.25rem;">The Denominator Problem: Extreme Weather Risk</h1>
-        <p style="font-size: 1rem; color: var(--text-muted); margin: 0;">An Economics Perspective on 85 Years of U.S. Mortality Data (1940–2024)[cite: 1, 2]</p>
-      </div>
-      <div style="text-align: right; font-family: var(--font-sans); font-size: 0.8rem;">
-        <strong>Author:</strong> Econ 238 Student<br>
-        <strong>Dimensions:</strong> 18" x 24" Poster Summary[cite: 1]
-      </div>
-    </div>
-
-    <div class="poster-grid">
-      <!-- Column 1 -->
-      <div class="poster-card">
-        <h3 style="color: var(--accent-blue); margin-bottom: 0.5rem;">1. Risk = Hazard x Exposure</h3>
-        <p>Raw U.S. storm fatalities dropped ~30% since 1940[cite: 2]. However, because population tripled[cite: 2], per-capita storm mortality risk collapsed by <strong>65%</strong>[cite: 2]. Adaptation is primarily an exposure story, not storm elimination[cite: 1].</p>
-        <div style="margin-top: 1rem;">
-          <canvas id="posterStormChart" height="180"></canvas>
-        </div>
-      </div>
-
-      <!-- Column 2 -->
-      <div class="poster-card">
-        <h3 style="color: var(--accent-amber); margin-bottom: 0.5rem;">2. Heat, Cold & Burke (NBER #34313)</h3>
-        <p>Direct NWS heat fatalities are rising[cite: 2], highlighted by the 1995 Chicago wave (1,021 deaths)[cite: 1, 2]. Burke et al. establish that temperature accounts for 5–12% of total mortality globally, with <strong>cold killing far more people than heat</strong>[cite: 1].</p>
-        <div style="margin-top: 1rem;">
-          <canvas id="posterHeatChart" height="180"></canvas>
-        </div>
-      </div>
-
-      <!-- Column 3 -->
-      <div class="poster-card">
-        <h3 style="color: var(--accent-red); margin-bottom: 0.5rem;">3. Economic Adaptation Costs</h3>
-        <p><strong>Nordhaus Relocation:</strong> Moving $600B in vulnerable coastal capital over 50-year replacement cycles costs $12B/yr—just <strong>0.04% of U.S. GDP</strong>[cite: 1].</p>
-        <p style="margin-top: 0.75rem;"><strong>Hold On:</strong> 85 years remains a small sample for rare mega-hurricanes[cite: 1].</p>
-        
-        <div style="margin-top: 1.5rem; border-top: 1px solid var(--border-color); padding-top: 1rem; text-align: center;">
-          <div style="background: #ccc; width: 80px; height: 80px; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-family: var(--font-sans); font-size: 0.6rem;">[QR CODE]</div>
-          <p style="font-size: 0.75rem; margin-top: 0.5rem;">Scan for Full Webpage & Methods[cite: 1]</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- JavaScript for Layout Switching & Chart Rendering -->
+  <!-- JavaScript Rendering -->
   <script>
-    // NOAA Official Data Arrays (1940s-2020s)
     const decadeLabels = ['1940s', '1950s', '1960s', '1970s', '1980s', '1990s', '2000s', '2010s', '2020s*'];
-    const rawStormFatalities = [262.3, 307.7, 281.9, 302.2, 173.6, 171.1, 235.9, 195.1, 217.8]; // NOAA NWS Data
-    const ratePerMillion = [1.85, 1.86, 1.47, 1.41, 0.73, 0.65, 0.80, 0.61, 0.65]; // Population Adjusted
+    const rawStormFatalities = [262.3, 307.7, 281.9, 302.2, 173.6, 171.1, 235.9, 195.1, 217.8];
+    const ratePerMillion = [1.85, 1.86, 1.47, 1.41, 0.73, 0.65, 0.80, 0.61, 0.65];
 
-    // Chart.js Configuration
     window.addEventListener('DOMContentLoaded', () => {
-      // 1. Web Storm Raw Chart
+      // 1. Storm Raw Chart
       new Chart(document.getElementById('stormChart'), {
         type: 'bar',
         data: {
@@ -388,7 +301,7 @@
         options: { responsive: true, plugins: { legend: { display: false } } }
       });
 
-      // 2. Web Rate Chart
+      // 2. Rate Chart
       new Chart(document.getElementById('rateChart'), {
         type: 'line',
         data: {
@@ -405,7 +318,7 @@
         options: { responsive: true, plugins: { legend: { display: false } } }
       });
 
-      // 3. Web Heat Chart
+      // 3. Heat Chart
       const heatYears = ['1986', '1990', '1995', '2000', '2005', '2010', '2015', '2020', '2023', '2024'];
       const heatDeaths = [38, 32, 1021, 158, 158, 138, 45, 350, 555, 529];
       new Chart(document.getElementById('heatChart'), {
@@ -423,39 +336,7 @@
         },
         options: { responsive: true, plugins: { legend: { display: false } } }
       });
-
-      // 4. Poster View Mini Charts
-      new Chart(document.getElementById('posterStormChart'), {
-        type: 'bar',
-        data: {
-          labels: decadeLabels,
-          datasets: [{ data: rawStormFatalities, backgroundColor: '#3B6E8F' }]
-        },
-        options: { responsive: true, plugins: { legend: { display: false } }, scales: { x: { ticks: { font: { size: 8 } } } } }
-      });
-
-      new Chart(document.getElementById('posterHeatChart'), {
-        type: 'line',
-        data: {
-          labels: heatYears,
-          datasets: [{ data: heatDeaths, borderColor: '#A6443A' }]
-        },
-        options: { responsive: true, plugins: { legend: { display: false } }, scales: { x: { ticks: { font: { size: 8 } } } } }
-      });
     });
-
-    // Mode Toggle Function
-    function toggleLayout() {
-      const body = document.body;
-      const btn = document.getElementById('mode-toggle');
-      if (body.classList.contains('poster-mode')) {
-        body.classList.remove('poster-mode');
-        btn.innerText = 'Switch to 18x24 Poster View';
-      } else {
-        body.classList.add('poster-mode');
-        btn.innerText = 'Switch to Full Webpage View';
-      }
-    }
   </script>
 </body>
 </html>
