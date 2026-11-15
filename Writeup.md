@@ -1,3 +1,5 @@
+---
+---
 The Idea: Hire 300,000 Beaver Families to Fix the Colorado River
 
 The Colorado River is over-promised by roughly 1.5 million acre-feet (MAF) every year. The usual fixes are desalination plants, giant pipelines, or paying farmers to stop farming. I want to try something more batsh1t: put beavers to work as a public water utility. Beaver ponds provide a slow runoff of the water flow, raise the water table, recharge the shallow aquifers, and provide a release of the water towards the end of the dry period. In studies on Western wildfires, it was even seen that the beaver wetlands remained green despite all other areas burning down around it. Beavers were trapped from the Western part of the country during the 1800s to use them for making hats, meaning that we have been living with a water system whose storage systems have been removed for 150 years.
