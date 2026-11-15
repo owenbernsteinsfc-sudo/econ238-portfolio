@@ -98,7 +98,7 @@ ul{padding-left:20px;margin:6px 0}
 
 <div class="cta">
 <!-- REPLACE the href below with the link to your full write-up (GitHub, Google Drive, etc.) -->
-<a href="writeup.md" target="_blank" rel="noopener">📄 Read the full write-up →</a>
+<a href="https://docs.google.com/document/d/1EGWVmHR0d8k95S3odScSOIXKALufkK1KTMCktlFXlH8/edit?tab=t.0" target="_blank" rel="noopener">📄 Read the full write-up →</a>
 </div>
 </div>
 </body>
